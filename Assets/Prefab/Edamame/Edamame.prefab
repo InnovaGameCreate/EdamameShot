@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 134643134309761887}
   - component: {fileID: 6245738113546192578}
   - component: {fileID: 5765907997459019148}
-  - component: {fileID: 7408557779075470942}
+  - component: {fileID: 2921223169027342123}
   m_Layer: 0
   m_Name: Edamame
   m_TagString: Untagged
@@ -119,10 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8ad3c5ab1c0ba469ce0302254c05ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedX: 50
+  _speedX: 100
   _speedY: 10
   _speedZ: 10
---- !u!54 &7408557779075470942
+--- !u!54 &2921223169027342123
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
