@@ -15,7 +15,8 @@ public class Edamame : MonoBehaviour
     [SerializeField] private float _speedX;
     [SerializeField] private float _speedY;
     [SerializeField] private float _speedZ;
-    private float _angle;
+    private float _angleX;
+    private float _angleY;
 
     // Start is called before the first frame update
     void Start()
@@ -35,21 +36,23 @@ public class Edamame : MonoBehaviour
     /// <summary>
     /// }“¤”­Ë
     /// </summary>
-    /// <param name="angle"> Šp“x </param>
-    public void ShootEdamame(float angle)
+    /// <param name="angleX"> ‰¡‚ÌŠp“x </param>
+    /// <param name="angleY"> c‚ÌŠp“x </param>
+    public void ShootEdamame(float angleX, float angleY)
     {
         // Šp“xİ’è
-        SetAngle(angle);
+        SetAngle(angleX, angleY);
 
         // Šp“x‚ğŒÊ“x–@‚É•ÏŠ·
-        float rad = TranslateAngleToRad(_angle);
+        float radX = TranslateAngleToRad(_angleX);
+        float radY = TranslateAngleToRad(_angleY);
 
         // ˆÚ“®—Ê‚ğŠp“x‚©‚çŒvZ
-        float deltaX = Mathf.Cos(rad) * _speedX;
-        float deltaY = _speedY;
-        float deltaZ = Mathf.Sin(rad) * _speedZ;
+        float deltaX = Mathf.Cos(radX) * _speedX;
+        float deltaY = Mathf.Sin(radY) * _speedY;
+        float deltaZ = Mathf.Sin(radX) * _speedZ;
 
-        // d—Í“K—p
+        // d—Í‚ğ“K—p
         _rb.useGravity = true;
         // ˆÚ“®
         _rb.AddForce(new Vector3(deltaX, deltaY, deltaZ), ForceMode.Impulse);
@@ -61,19 +64,30 @@ public class Edamame : MonoBehaviour
     /// <summary>
     /// }“¤‚ÌŠp“x‚Ìİ’è
     /// </summary>
-    /// <param name="angle"> Šp“x </param>
-    public void SetAngle(float angle)
+    /// <param name="angleX"> ‰¡‚ÌŠp“x </param>
+    /// <param name="angleY"> c‚ÌŠp“x </param>
+    public void SetAngle(float angleX, float angleY)
     {
-        if (angle < 0)
+        if (angleX < 0)
         {
-            _angle *= -1;
+            angleX *= -1;
         }
-        if (angle > 180)
+        if (angleX > 180)
         {
-            _angle = 360 - angle;
+            angleX = 360 - angleX;
         }
 
-        _angle = angle;
+        if (angleY < 0)
+        {
+            angleY *= -1;
+        }
+        if (angleY > 180)
+        {
+            angleY = 360 - angleY;
+        }
+
+        _angleX = angleX;
+        _angleY = angleY;
     }
 
     /// <summary>
