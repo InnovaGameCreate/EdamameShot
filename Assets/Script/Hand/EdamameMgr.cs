@@ -5,11 +5,14 @@ using UnityEngine;
 public class EdamameMgr : MonoBehaviour
 {
     // äpìxÇÃîÕàÕ
-    public const float ANGLE_MIN = 30;
-    public const float ANGLE_MAX = 150;
+    public const float ANGLE_X_MIN = 30;
+    public const float ANGLE_X_MAX = 150;
+    public const float ANGLE_Y_MIN = 10;
+    public const float ANGLE_Y_MAX = 80;
 
     // äpìx
-    private float _angle;
+    private float _angleX;
+    private float _angleY;
 
     // Ç«ÇÍÇæÇØàÍâÒÇ≈äpìxÇìÆÇ©Ç∑Ç©
     [SerializeField] private float _speedAngle;
@@ -23,7 +26,8 @@ public class EdamameMgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _angle = 30;
+        _angleX = 30;
+        _angleY = 30;
         _currentEdamame = Instantiate(_edamamePrefab);// é}ì§ê∂ê¨
     }
 
@@ -33,7 +37,7 @@ public class EdamameMgr : MonoBehaviour
         if (isShoot())
         {
             Edamame edamame = _currentEdamame.GetComponent<Edamame>();
-            edamame.ShootEdamame(_angle);// é}ì§î≠éÀ
+            edamame.ShootEdamame(_angleX, _angleY);// é}ì§î≠éÀ
 
             _currentEdamame = Instantiate(_edamamePrefab);// êVÇµÇ¢é}ì§ê∂ê¨
         }
@@ -41,11 +45,19 @@ public class EdamameMgr : MonoBehaviour
         // äpìxí≤êÆ
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            _angle += _speedAngle * Time.deltaTime;
+            _angleX += _speedAngle * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            _angle -= _speedAngle * Time.deltaTime;
+            _angleX -= _speedAngle * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            _angleY += _speedAngle * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            _angleY -= _speedAngle * Time.deltaTime;
         }
         CheckAngleRange();  // äpìxÇêßå¿
     }
@@ -64,15 +76,25 @@ public class EdamameMgr : MonoBehaviour
     /// </summary>
     void CheckAngleRange()
     {
-        if (_angle < ANGLE_MIN)
+        if (_angleX < ANGLE_X_MIN)
         {
-            _angle = ANGLE_MIN;
+            _angleX = ANGLE_X_MIN;
         }
-        if (_angle > ANGLE_MAX)
+        if (_angleX > ANGLE_X_MAX)
         {
-            _angle = ANGLE_MAX;
+            _angleX = ANGLE_X_MAX;
+        }
+        if (_angleY < ANGLE_Y_MIN)
+        {
+            _angleY = ANGLE_Y_MIN;
+        }
+        if (_angleY > ANGLE_Y_MAX)
+        {
+            _angleY = ANGLE_Y_MAX;
         }
 
-        Debug.Log("angle: " + _angle);
+
+        Debug.Log("angleX: " + _angleX);
+        Debug.Log("angleY: " + _angleY);
     }
 }
