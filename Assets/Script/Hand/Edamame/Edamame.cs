@@ -47,11 +47,11 @@ public class Edamame : MonoBehaviour
         // ˆÚ“®—Ê‚ğŠp“x‚©‚çŒvZ
         float deltaX = Mathf.Cos(radX) * _forceX;
         float deltaY = Mathf.Sin(radY) * _forceY;
-        float deltaZ = Mathf.Sin(radX) * _forceZ;
+        float deltaZ = _forceZ;
 
         // d—Í‚ğ“K—p
         _rb.useGravity = true;
-        // ˆÚ“®
+        // ”­Ë
         _rb.AddForce(new Vector3(deltaX, deltaY, deltaZ), ForceMode.Impulse);
 
         // “–‚½‚è”»’è—LŒø‚©
@@ -97,7 +97,30 @@ public class Edamame : MonoBehaviour
         return Mathf.PI / (180 / angle);
     }
 
-    // }“¤‚ÌŠp“x‚ğæ“¾
+    /// <summary>
+    /// }“¤‚ğ”­Ë‚·‚éŠp“x(X)
+    /// </summary>
+    /// <returns> Šp“x(X) </returns>
     public float GetAngleX() { return _angleX; }
+    /// <summary>
+    /// }“¤‚ğ”­Ë‚·‚éŠp“x(Y)
+    /// </summary>
+    /// <returns> Šp“x(Y) </returns>
     public float GetAngleY() { return _angleY; }
+
+    /// <summary>
+    /// }“¤‚ğ”­Ë‚·‚é—Í(X)
+    /// </summary>
+    /// <returns> —Í(X) </returns>
+    public float GetForceX() { return _forceX; }
+    /// <summary>
+    /// }“¤‚ğ”­Ë‚·‚é—Í(Y)
+    /// </summary>
+    /// <returns> —Í(Y) </returns>
+    public float GetForceY() { return _forceY; }
+    /// <summary>
+    /// }“¤‚ğ”­Ë‚·‚é—Í(Z)
+    /// </summary>
+    /// <returns> —Í(Z) </returns>
+    public float GetForceZ() { return _forceZ; }
 }

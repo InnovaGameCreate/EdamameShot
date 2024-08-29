@@ -5,23 +5,34 @@ using UnityEngine;
 public class PredictionLine : MonoBehaviour
 {
     // íËêî
-    const float G = 9.8f * 0.1f; // èdóÕ
+    const float G = 9.81f; // èdóÕ
 
     // é}ì§Prefab
     [SerializeField] private GameObject _edamamePrefab;
+
+    // Hand
+    [SerializeField] private GameObject _hand;
+
+    // EdamameMgr
+    private EdamameMgr _edamameMgr;
 
     // åªç›ÇÃé}ì§
     Edamame _currentEdamame;
 
     // é}ì§ÇÃÉpÉâÉÅÅ[É^
-    [SerializeField] private float _speedX;
-    [SerializeField] private float _speedY;
-    [SerializeField] private float _speedZ;
     private float _angleX;
     private float _angleY;
     private float _mass;
     private float _forceX;
     private float _forceY;
+    private float _forceZ;
+    private float _accelX;
+    private float _accelY;
+    private float _accelZ;
+
+    // PredictionLine
+    private LineRenderer _lineRenderer;
+    [SerializeField] private int _numLinePosition;
 
     // Ç«ÇÃÇ≠ÇÁÇ¢åoÇ¡ÇΩÇ©
     float _time;
@@ -31,6 +42,11 @@ public class PredictionLine : MonoBehaviour
     {
         Rigidbody rb = _edamamePrefab.GetComponent<Rigidbody>();
         _mass = rb.mass;
+
+        _edamameMgr = _hand.GetComponent<EdamameMgr>();
+        
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.positionCount = _numLinePosition;
     }
 
     // Update is called once per frame
@@ -38,7 +54,37 @@ public class PredictionLine : MonoBehaviour
     {
         _time += Time.deltaTime;
 
-        _currentEdamame = _edamamePrefab.GetComponent<Edamame>();
+        DrawPredictionLine();// ãOìπó\ë™ê¸ï`âÊ
+    }
+
+    private void DrawPredictionLine()
+    {
+        _currentEdamame = _edamameMgr.GetComponent<EdamameMgr>().GetCurrentEdamame().GetComponent<Edamame>();
+        _forceX = _currentEdamame.GetForceX();
+        _forceY = _currentEdamame.GetForceY();
+        _forceZ = _currentEdamame.GetForceZ();
+        _angleX = _currentEdamame.GetAngleX();
+        _angleY = _currentEdamame.GetAngleY();
+
+        float radX = TranslateAngleToRad(_angleX);
+        float radY = TranslateAngleToRad(_angleY);
+
+        _accelX = _forceX / _mass;
+        _accelY = ((_forceY * Mathf.Sin(radY)) / _mass) - G;
+        _accelZ = _forceZ;
+        
+        float deltaTime = 0;
+        for (int i = 0; i < _numLinePosition; ++i)
+        {
+            float x = _accelX * Mathf.Cos(radX) * deltaTime * deltaTime / 2;
+            float y = _accelY * Mathf.Sin(radY) * deltaTime * deltaTime / 2;
+            float z = _accelZ * deltaTime * deltaTime / 2;
+
+            _lineRenderer.SetPosition(i, new Vector3(x, y, z));
+            deltaTime += Time.deltaTime * 100;
+
+            Debug.Log($"x: {x}\ny: {y}\nz: {z}");
+        }
     }
 
     /// <summary>
@@ -70,7 +116,12 @@ public class PredictionLine : MonoBehaviour
         _angleY = angleY;
     }
 
-    float translateAngleToRad(float angle)
+    /// <summary>
+    /// äpìxñ@Çå ìxñ@Ç…ïœä∑
+    /// </summary>
+    /// <param name="angle"> äpìx(äpìxñ@) </param>
+    /// <returns> äpìx(å ìxñ@) </returns>
+    float TranslateAngleToRad(float angle)
     {
         return Mathf.PI / (180 / angle);
     }

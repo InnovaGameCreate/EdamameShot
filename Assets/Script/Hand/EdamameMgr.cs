@@ -97,4 +97,9 @@ public class EdamameMgr : MonoBehaviour
         Debug.Log("angleX: " + _angleX);
         Debug.Log("angleY: " + _angleY);
     }
+
+    public GameObject GetCurrentEdamame()
+    {
+        return _currentEdamame;
+    }
 }
