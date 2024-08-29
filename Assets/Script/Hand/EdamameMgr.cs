@@ -92,14 +92,21 @@ public class EdamameMgr : MonoBehaviour
         {
             _angleY = ANGLE_Y_MAX;
         }
-
-
-        Debug.Log("angleX: " + _angleX);
-        Debug.Log("angleY: " + _angleY);
     }
 
     public GameObject GetCurrentEdamame()
     {
         return _currentEdamame;
     }
+
+    /// <summary>
+    /// Šp“x‚ðŽæ“¾(X)
+    /// </summary>
+    /// <returns> Šp“x(X) </returns>
+    public float GetAngleX() { return _angleX; }
+    /// <summary>
+    /// Šp“x‚ðŽæ“¾(Y)
+    /// </summary>
+    /// <returns> Šp“x(X) </returns>
+    public float GetAngleY() { return _angleY; }
 }

@@ -23,9 +23,9 @@ public class PredictionLine : MonoBehaviour
     private float _angleX;
     private float _angleY;
     private float _mass;
-    private float _forceX;
-    private float _forceY;
-    private float _forceZ;
+    private float _impulseX;
+    private float _impulseY;
+    private float _impulseZ;
     private float _accelX;
     private float _accelY;
     private float _accelZ;
@@ -59,31 +59,34 @@ public class PredictionLine : MonoBehaviour
 
     private void DrawPredictionLine()
     {
-        _currentEdamame = _edamameMgr.GetComponent<EdamameMgr>().GetCurrentEdamame().GetComponent<Edamame>();
-        _forceX = _currentEdamame.GetForceX();
-        _forceY = _currentEdamame.GetForceY();
-        _forceZ = _currentEdamame.GetForceZ();
-        _angleX = _currentEdamame.GetAngleX();
-        _angleY = _currentEdamame.GetAngleY();
+        _currentEdamame = _edamameMgr.GetCurrentEdamame().GetComponent<Edamame>();
+        _impulseX = _currentEdamame.GetForceX();
+        _impulseY = _currentEdamame.GetForceY();
+        _impulseZ = _currentEdamame.GetForceZ();
+        _angleX = _edamameMgr.GetAngleX();
+        _angleY = _edamameMgr.GetAngleY();
 
         float radX = TranslateAngleToRad(_angleX);
         float radY = TranslateAngleToRad(_angleY);
 
-        _accelX = _forceX / _mass;
-        _accelY = ((_forceY * Mathf.Sin(radY)) / _mass) - G;
-        _accelZ = _forceZ;
+        Rigidbody rb = _edamamePrefab.GetComponent<Rigidbody>();
+
+        Vector3 impulse = new Vector3(_impulseX * Mathf.Cos(radX), _impulseY * Mathf.Sin(radY), _impulseZ);
+        Vector3 initSpeed = impulse / _mass;
+        Vector3 initPosition = rb.position;
+        Vector3 gravity = new Vector3(0, -G, 0);
         
         float deltaTime = 0;
         for (int i = 0; i < _numLinePosition; ++i)
         {
-            float x = _accelX * Mathf.Cos(radX) * deltaTime * deltaTime / 2;
-            float y = _accelY * Mathf.Sin(radY) * deltaTime * deltaTime / 2;
-            float z = _accelZ * deltaTime * deltaTime / 2;
+            Vector3 position = initPosition + initSpeed * deltaTime + 0.5f * gravity * deltaTime * deltaTime;
 
-            _lineRenderer.SetPosition(i, new Vector3(x, y, z));
-            deltaTime += Time.deltaTime * 100;
-
-            Debug.Log($"x: {x}\ny: {y}\nz: {z}");
+            if (position.x > 3)
+            {
+                break;
+            }
+            _lineRenderer.SetPosition(i, position);
+            deltaTime += Time.deltaTime;
         }
     }
 
