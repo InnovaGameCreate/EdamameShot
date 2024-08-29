@@ -8,13 +8,10 @@ public class Edamame : MonoBehaviour
     // Rigidbody
     private Rigidbody _rb;
 
-    // 定数
-    const float G = 9.8f * 0.1f; // 重力
-
     // 枝豆のパラメータ
-    [SerializeField] private float _speedX;
-    [SerializeField] private float _speedY;
-    [SerializeField] private float _speedZ;
+    [SerializeField] private float _forceX;
+    [SerializeField] private float _forceY;
+    [SerializeField] private float _forceZ;
     private float _angleX;
     private float _angleY;
 
@@ -48,9 +45,9 @@ public class Edamame : MonoBehaviour
         float radY = TranslateAngleToRad(_angleY);
 
         // 移動量を角度から計算
-        float deltaX = Mathf.Cos(radX) * _speedX;
-        float deltaY = Mathf.Sin(radY) * _speedY;
-        float deltaZ = Mathf.Sin(radX) * _speedZ;
+        float deltaX = Mathf.Cos(radX) * _forceX;
+        float deltaY = Mathf.Sin(radY) * _forceY;
+        float deltaZ = Mathf.Sin(radX) * _forceZ;
 
         // 重力を適用
         _rb.useGravity = true;
@@ -99,4 +96,8 @@ public class Edamame : MonoBehaviour
     {
         return Mathf.PI / (180 / angle);
     }
+
+    // 枝豆の角度を取得
+    public float GetAngleX() { return _angleX; }
+    public float GetAngleY() { return _angleY; }
 }

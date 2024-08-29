@@ -1,0 +1,77 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PredictionLine : MonoBehaviour
+{
+    // íËêî
+    const float G = 9.8f * 0.1f; // èdóÕ
+
+    // é}ì§Prefab
+    [SerializeField] private GameObject _edamamePrefab;
+
+    // åªç›ÇÃé}ì§
+    Edamame _currentEdamame;
+
+    // é}ì§ÇÃÉpÉâÉÅÅ[É^
+    [SerializeField] private float _speedX;
+    [SerializeField] private float _speedY;
+    [SerializeField] private float _speedZ;
+    private float _angleX;
+    private float _angleY;
+    private float _mass;
+    private float _forceX;
+    private float _forceY;
+
+    // Ç«ÇÃÇ≠ÇÁÇ¢åoÇ¡ÇΩÇ©
+    float _time;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Rigidbody rb = _edamamePrefab.GetComponent<Rigidbody>();
+        _mass = rb.mass;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        _time += Time.deltaTime;
+
+        _currentEdamame = _edamamePrefab.GetComponent<Edamame>();
+    }
+
+    /// <summary>
+    /// é}ì§ÇÃäpìxÇÃê›íË
+    /// </summary>
+    /// <param name="angleX"> â°ÇÃäpìx </param>
+    /// <param name="angleY"> ècÇÃäpìx </param>
+    public void SetAngle(float angleX, float angleY)
+    {
+        if (angleX < 0)
+        {
+            angleX *= -1;
+        }
+        if (angleX > 180)
+        {
+            angleX = 360 - angleX;
+        }
+
+        if (angleY < 0)
+        {
+            angleY *= -1;
+        }
+        if (angleY > 180)
+        {
+            angleY = 360 - angleY;
+        }
+
+        _angleX = angleX;
+        _angleY = angleY;
+    }
+
+    float translateAngleToRad(float angle)
+    {
+        return Mathf.PI / (180 / angle);
+    }
+}
