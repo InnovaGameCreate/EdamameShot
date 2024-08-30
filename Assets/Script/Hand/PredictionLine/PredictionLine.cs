@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,16 +27,15 @@ public class PredictionLine : MonoBehaviour
     private float _impulseX;
     private float _impulseY;
     private float _impulseZ;
-    private float _accelX;
-    private float _accelY;
-    private float _accelZ;
 
     // PredictionLine
     private LineRenderer _lineRenderer;
-    [SerializeField] private int _numLinePosition;
+    [SerializeField] private int _maxLinePosition;
+    [SerializeField] private float _maxPredictionLineDistance;
 
     // どのくらい経ったか
     float _time;
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +46,7 @@ public class PredictionLine : MonoBehaviour
         _edamameMgr = _hand.GetComponent<EdamameMgr>();
         
         _lineRenderer = GetComponent<LineRenderer>();
-        _lineRenderer.positionCount = _numLinePosition;
+        _lineRenderer.positionCount = _maxLinePosition;
     }
 
     // Update is called once per frame
@@ -60,34 +60,66 @@ public class PredictionLine : MonoBehaviour
     private void DrawPredictionLine()
     {
         _currentEdamame = _edamameMgr.GetCurrentEdamame().GetComponent<Edamame>();
-        _impulseX = _currentEdamame.GetForceX();
-        _impulseY = _currentEdamame.GetForceY();
-        _impulseZ = _currentEdamame.GetForceZ();
-        _angleX = _edamameMgr.GetAngleX();
-        _angleY = _edamameMgr.GetAngleY();
-
-        float radX = TranslateAngleToRad(_angleX);
-        float radY = TranslateAngleToRad(_angleY);
-
-        Rigidbody rb = _edamamePrefab.GetComponent<Rigidbody>();
-
-        Vector3 impulse = new Vector3(_impulseX * Mathf.Cos(radX), _impulseY * Mathf.Sin(radY), _impulseZ);
-        Vector3 initSpeed = impulse / _mass;
-        Vector3 initPosition = rb.position;
-        Vector3 gravity = new Vector3(0, -G, 0);
-        
-        float deltaTime = 0;
-        for (int i = 0; i < _numLinePosition; ++i)
+        if (HasHandChanged())   // 角度が変更されたとき
         {
-            Vector3 position = initPosition + initSpeed * deltaTime + 0.5f * gravity * deltaTime * deltaTime;
+            // 各値を取得
+            _impulseX = _currentEdamame.GetImpulseX();
+            _impulseY = _currentEdamame.GetImpulseY();
+            _impulseZ = _currentEdamame.GetImpulseZ();
+            _angleX = _edamameMgr.GetAngleX();
+            _angleY = _edamameMgr.GetAngleY();
 
-            if (position.x > 3)
+            // 角度を弧度法に変換
+            float radX = TranslateAngleToRad(_angleX);
+            float radY = TranslateAngleToRad(_angleY);
+
+            Rigidbody rb = _edamamePrefab.GetComponent<Rigidbody>();
+
+            // 発射するときの衝撃(力積)
+            Vector3 impulse = new Vector3(_impulseX * Mathf.Cos(radX), _impulseY * Mathf.Sin(radY), _impulseZ);
+            Vector3 initSpeed = impulse / _mass;
+            Vector3 initPosition = rb.position;
+            Vector3 gravity = new Vector3(0, -G, 0);
+        
+            // PredictionLineの長さ
+            float allDistance = 0;
+            // 全ての点
+            List<Vector3> positions = new List<Vector3>();
+            float z = 0;
+            for (int i = 0; i < _maxLinePosition; ++i)
             {
-                break;
+                // zを決めて，そこからtを計算
+                float deltaTime = Mathf.Sqrt((2 * (initPosition.z - z)) / -G);
+                Vector3 position = initPosition + initSpeed * deltaTime + 0.5f * gravity * deltaTime * deltaTime;
+                positions.Add(position);
+
+                if (allDistance >= _maxPredictionLineDistance)  // 長さの最大に達したら終了
+                {
+                    break;
+                }
+                if (i > 0)
+                {
+                    allDistance += Vector3.Distance(positions.ToArray()[i - 1], position);    // 長さを計算
+                }
+
+
+                // zを増やす
+                z += 0.05f;
             }
-            _lineRenderer.SetPosition(i, position);
-            deltaTime += Time.deltaTime;
+            _lineRenderer.positionCount = positions.Count;   // LineRendererの数を設定
+
+            _lineRenderer.SetPositions(positions.ToArray()); // 点を設定
+
         }
+    }
+
+    /// <summary>
+    /// 角度が変更されたか
+    /// </summary>
+    /// <returns> bool </returns>
+    private bool HasHandChanged()
+    {
+        return (_angleX != _edamameMgr.GetAngleX() || _angleY != _edamameMgr.GetAngleY());
     }
 
     /// <summary>

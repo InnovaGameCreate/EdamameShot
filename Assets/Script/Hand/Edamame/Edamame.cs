@@ -9,9 +9,9 @@ public class Edamame : MonoBehaviour
     private Rigidbody _rb;
 
     // }“¤‚Ìƒpƒ‰ƒ[ƒ^
-    [SerializeField] private float _forceX;
-    [SerializeField] private float _forceY;
-    [SerializeField] private float _forceZ;
+    [SerializeField] private float _impulseX;
+    [SerializeField] private float _impulseY;
+    [SerializeField] private float _impulseZ;
     private float _angleX;
     private float _angleY;
 
@@ -45,9 +45,9 @@ public class Edamame : MonoBehaviour
         float radY = TranslateAngleToRad(_angleY);
 
         // ˆÚ“®—Ê‚ğŠp“x‚©‚çŒvZ
-        float deltaX = Mathf.Cos(radX) * _forceX;
-        float deltaY = Mathf.Sin(radY) * _forceY;
-        float deltaZ = _forceZ;
+        float deltaX = Mathf.Cos(radX) * _impulseX;
+        float deltaY = Mathf.Sin(radY) * _impulseY;
+        float deltaZ = _impulseZ;
 
         // d—Í‚ğ“K—p
         _rb.useGravity = true;
@@ -112,15 +112,15 @@ public class Edamame : MonoBehaviour
     /// }“¤‚ğ”­Ë‚·‚é—Í(X)
     /// </summary>
     /// <returns> —Í(X) </returns>
-    public float GetForceX() { return _forceX; }
+    public float GetImpulseX() { return _impulseX; }
     /// <summary>
     /// }“¤‚ğ”­Ë‚·‚é—Í(Y)
     /// </summary>
     /// <returns> —Í(Y) </returns>
-    public float GetForceY() { return _forceY; }
+    public float GetImpulseY() { return _impulseY; }
     /// <summary>
     /// }“¤‚ğ”­Ë‚·‚é—Í(Z)
     /// </summary>
     /// <returns> —Í(Z) </returns>
-    public float GetForceZ() { return _forceZ; }
+    public float GetImpulseZ() { return _impulseZ; }
 }
