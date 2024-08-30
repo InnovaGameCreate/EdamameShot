@@ -19,7 +19,7 @@ public class Edamame : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _rb.useGravity = false; // —‚¿‚È‚¢‚æ‚¤‚Éİ’è
+        //_rb.useGravity = false; // —‚¿‚È‚¢‚æ‚¤‚Éİ’è
 
         // “–‚½‚è”»’è–³Œø‰»
         gameObject.GetComponent<Collider>().enabled = false;
@@ -54,7 +54,7 @@ public class Edamame : MonoBehaviour
         // ”­Ë
         _rb.AddForce(new Vector3(deltaX, deltaY, deltaZ), ForceMode.Impulse);
 
-        // “–‚½‚è”»’è—LŒø‚©
+        // “–‚½‚è”»’è—LŒø‰»
         gameObject.GetComponent<Collider>().enabled = true;
     }
 
