@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class kinscorecounter : MonoBehaviour
 {
-    [SerializeField] private int kinscore;
+    [SerializeField] private int score;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -12,12 +12,12 @@ public class kinscorecounter : MonoBehaviour
     public void ScoreUp()
     {
         //‹à“¤‚ªâÄ‚É“ü‚Á‚½‚Æ‚«‚Ìƒƒ\ƒbƒh
-        kinscore = kinscore + 5;
+        score = score + 5;
     }
     // Start is called before the first frame update
     public int GetScore()
     {
-        return kinscore;
+        return score;
     }
 
     // Update is called once per frame
