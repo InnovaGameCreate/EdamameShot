@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - RemainingEdamameImg
-  - RemainingEdamameImgMask
   layers:
   - Default
   - TransparentFX

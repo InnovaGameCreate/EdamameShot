@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 620592775}
   m_Layer: 5
   m_Name: ReminingEdamame2
-  m_TagString: RemainingEdamameImg
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 1210993123}
   m_Layer: 5
   m_Name: ReminingEdamame3
-  m_TagString: RemainingEdamameImg
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -996,7 +996,7 @@ GameObject:
   - component: {fileID: 1411563632}
   m_Layer: 5
   m_Name: ReminingEdamame1
-  m_TagString: RemainingEdamameImg
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 1824748209}
   m_Layer: 5
   m_Name: Mask1
-  m_TagString: RemainingEdamameImgMask
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1368,7 +1368,7 @@ GameObject:
   - component: {fileID: 1973439181}
   m_Layer: 5
   m_Name: Mask2
-  m_TagString: RemainingEdamameImgMask
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
