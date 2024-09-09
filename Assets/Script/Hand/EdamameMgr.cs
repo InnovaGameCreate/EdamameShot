@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EdamameMgr : MonoBehaviour
@@ -23,12 +24,18 @@ public class EdamameMgr : MonoBehaviour
     // 保持している枝豆
     private GameObject _currentEdamame;
 
+    // 残弾の管理するオブジェクト
+    [SerializeField] private GameObject _remainingEdamameMgrObj;
+    private RemainingEdamameMgr _remainingEdamameMgr;
+
     // Start is called before the first frame update
     void Start()
     {
         _angleX = 30;
         _angleY = 30;
         _currentEdamame = Instantiate(_edamamePrefab);// 枝豆生成
+
+        _remainingEdamameMgr = _remainingEdamameMgrObj.GetComponent<RemainingEdamameMgr>();
     }
 
     // Update is called once per frame
@@ -36,6 +43,9 @@ public class EdamameMgr : MonoBehaviour
     {
         if (isShoot())
         {
+            if (!_remainingEdamameMgr.DeleteRemainingEdamame())
+                return;
+
             Edamame edamame = _currentEdamame.GetComponent<Edamame>();
             edamame.ShootEdamame(_angleX, _angleY);// 枝豆発射
 
