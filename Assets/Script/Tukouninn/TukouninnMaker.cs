@@ -5,11 +5,11 @@ using UnityEngine;
 public class TukouninnMaker : MonoBehaviour
 {
     [SerializeField] private GameObject TukouninnPrefab;
-    [SerializeField] private float makeTime;
+    [SerializeField] private float makeTime;　//生成頻度の指定
     private float waitTime;
     [SerializeField] private float sponeX;
-    [SerializeField] private float sponeranX;
     [SerializeField] private float sponeZ;
+    [SerializeField] private float Timerange; //makeTime-TimerangeからmakeTime+Timerange 秒でランダムに生成される
     private float ranX;
     private float ranZ;
 
@@ -28,9 +28,8 @@ public class TukouninnMaker : MonoBehaviour
         }
         else
         {
-            ranX = Random.Range(sponeranX * -1, sponeranX);
-            Instantiate(TukouninnPrefab, new Vector3(ranX + sponeX, 0, sponeZ), TukouninnPrefab.transform.rotation);
-            waitTime = 0;
+            Instantiate(TukouninnPrefab, new Vector3(sponeX, 0, sponeZ), TukouninnPrefab.transform.rotation);
+            waitTime = Random.Range(-1*Timerange,Timerange);
         }
     }
 

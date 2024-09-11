@@ -247,10 +247,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TukouninnPrefab: {fileID: 923032310586569709, guid: 443035acec4da064cb783a6803e8d764, type: 3}
-  makeTime: 3
-  sponeX: 0
-  sponeranX: 0
+  makeTime: 4
+  sponeX: -5
   sponeZ: 0
+  Timerange: 3
 --- !u!4 &1083758061
 Transform:
   m_ObjectHideFlags: 0

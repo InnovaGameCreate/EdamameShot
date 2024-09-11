@@ -118,6 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d558b2303cef2a5478649411bf7bdd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TukouninnSpeedX: 3
-  TukouninnLifeTime: 1
+  TukouninnSpeedX: 2
+  TukouninnLifeTime: 10
   HitTukouninnPrefab: {fileID: 356710947996708264, guid: d4da3c860a588a74db71f14d1c642150, type: 3}
