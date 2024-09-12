@@ -3,8 +3,21 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum KindOdEdamame { 
+    NormalEdamame,
+    RainbowEdamame,
+    GoldenEdamame,
+    RopeEdamame,
+    BlackEdamame,
+    ClockEdamame,
+    ArrowEdamame
+};
+
 public class Edamame : MonoBehaviour
 {
+    // 何の枝豆か
+    KindOdEdamame _kind;
+
     // Rigidbody
     private Rigidbody _rb;
 
@@ -19,15 +32,22 @@ public class Edamame : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        //_rb.useGravity = false; // 落ちないように設定
 
         // 当たり判定無効化
         gameObject.GetComponent<Collider>().enabled = false;
+
+        // デフォルトは普通の枝豆
+        _kind = KindOdEdamame.NormalEdamame;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // 落ちて行ったら削除
+        if (transform.position.y < -5)
+        {
+            Destroy(gameObject);
+        }
     }
 
     /// <summary>
@@ -54,7 +74,6 @@ public class Edamame : MonoBehaviour
         // 発射
         _rb.AddForce(new Vector3(deltaX, deltaY, deltaZ), ForceMode.Impulse);
 
-        // 当たり判定有効化
         gameObject.GetComponent<Collider>().enabled = true;
     }
 
@@ -87,6 +106,14 @@ public class Edamame : MonoBehaviour
         _angleY = angleY;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Basket")
+        {
+            Destroy(gameObject);
+        }
+    }
+
     /// <summary>
     /// 角度法を弧度法に変換
     /// </summary>
@@ -95,6 +122,15 @@ public class Edamame : MonoBehaviour
     private float TranslateAngleToRad(float angle)
     {
         return Mathf.PI / (180 / angle);
+    }
+
+    public void SetKind(KindOdEdamame kind)
+    {
+        _kind = kind;
+    }
+    public KindOdEdamame GetKind()
+    {
+        return _kind;
     }
 
     /// <summary>

@@ -19,10 +19,22 @@ public class EdamameMgr : MonoBehaviour
     [SerializeField] private float _speedAngle;
 
     // é}ì§Prefab
-    [SerializeField] private GameObject _edamamePrefab;
+    private GameObject _edamamePrefab;
 
     // ï€éùÇµÇƒÇ¢ÇÈé}ì§
     private GameObject _currentEdamame;
+
+    // é}ì§ÇÃéÌóﬁ
+    KindOdEdamame _kind;
+
+    // ëSÇƒÇÃé}ì§ÇÃPrefab
+    [SerializeField] private GameObject NORMAL_EDAMAME_PREFAB;
+    [SerializeField] private GameObject RAINBOW_EDAMAME_PREFAB;
+    [SerializeField] private GameObject GOLDEN_EDAMAME_PREFAB;
+    [SerializeField] private GameObject ROPE_EDAMAME_PREFAB;
+    [SerializeField] private GameObject BLACK_EDAMAME_PREFAB;
+    [SerializeField] private GameObject CLOCK_EDAMAME_PREFAB;
+    [SerializeField] private GameObject ARROW_EDAMAME_PREFAB;
 
     // écíeÇÃä«óùÇ∑ÇÈÉIÉuÉWÉFÉNÉg
     [SerializeField] private GameObject _remainingEdamameMgrObj;
@@ -33,6 +45,36 @@ public class EdamameMgr : MonoBehaviour
     {
         _angleX = 30;
         _angleY = 30;
+
+        _kind = KindOdEdamame.ArrowEdamame;
+
+        switch (_kind)
+        {
+            case KindOdEdamame.NormalEdamame:
+                _edamamePrefab = NORMAL_EDAMAME_PREFAB; break;
+
+            case KindOdEdamame.RainbowEdamame:
+                _edamamePrefab = RAINBOW_EDAMAME_PREFAB; break;
+
+            case KindOdEdamame.GoldenEdamame:
+                _edamamePrefab = GOLDEN_EDAMAME_PREFAB; break;
+
+            case KindOdEdamame.RopeEdamame:
+                _edamamePrefab = ROPE_EDAMAME_PREFAB; break;
+
+            case KindOdEdamame.BlackEdamame:
+                _edamamePrefab = BLACK_EDAMAME_PREFAB; break;
+
+            case KindOdEdamame.ClockEdamame:
+                _edamamePrefab = CLOCK_EDAMAME_PREFAB; break;
+
+            case KindOdEdamame.ArrowEdamame:
+                _edamamePrefab = ARROW_EDAMAME_PREFAB; break;
+
+            default:
+                Debug.Log("Error"); break;
+        }
+
         _currentEdamame = Instantiate(_edamamePrefab);// é}ì§ê∂ê¨
 
         _remainingEdamameMgr = _remainingEdamameMgrObj.GetComponent<RemainingEdamameMgr>();

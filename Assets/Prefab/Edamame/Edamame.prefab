@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _impulseX: 10
   _impulseY: 10
-  _impulseZ: 4
+  _impulseZ: 3
 --- !u!54 &2921223169027342123
 Rigidbody:
   m_ObjectHideFlags: 0
