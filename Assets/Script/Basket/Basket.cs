@@ -96,12 +96,15 @@ public class Basket : MonoBehaviour
                 break;
 
             case KindOdEdamame.RopeEdamame:
-                _hasCaughtRopeEdamame = true;
-                for (int i = 0; i < 3; ++i)
+                if (!_hasCaughtRopeEdamame)
                 {
-                    _ropeEdamameFences.Add(Instantiate(_ropeEdamame_fencePrefab, new Vector3(-4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
-                    _ropeEdamameFences.Add(Instantiate(_ropeEdamame_fencePrefab, new Vector3(4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        _ropeEdamameFences.Add(Instantiate(_ropeEdamame_fencePrefab, new Vector3(-4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
+                        _ropeEdamameFences.Add(Instantiate(_ropeEdamame_fencePrefab, new Vector3(4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
+                    }
                 }
+                _hasCaughtRopeEdamame = true;
                 break;
 
             case KindOdEdamame.BlackEdamame:
