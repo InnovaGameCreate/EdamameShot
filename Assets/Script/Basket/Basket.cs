@@ -9,8 +9,8 @@ public class Basket : MonoBehaviour
     private KindOdEdamame _kind;
 
     // çÚÇÃPrefab
-    [SerializeField] private GameObject _arrowEdamame_fencePrefab;
-    private List<GameObject> _arrowEdamameFences;
+    [SerializeField] private GameObject _ropeEdamame_fencePrefab;
+    private List<GameObject> _ropeEdamameFences;
 
     // ñÓàÛé}ì§ÇÉLÉÉÉbÉ`ÇµÇΩÇ©
     private bool _hasCaughtArrowEdamame;
@@ -36,7 +36,7 @@ public class Basket : MonoBehaviour
         _timerBigBasket = 0;
         _timerFence = 0;
 
-        _arrowEdamameFences = new List<GameObject>();
+        _ropeEdamameFences = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -63,11 +63,11 @@ public class Basket : MonoBehaviour
                 _hasCaughtRopeEdamame = false;
                 _timerFence = 0;
 
-                for (int i = 0; i <  _arrowEdamameFences.Count; ++i)
+                for (int i = 0; i <  _ropeEdamameFences.Count; ++i)
                 {
-                    Destroy(_arrowEdamameFences[i]);
+                    Destroy(_ropeEdamameFences[i]);
                 }
-                _arrowEdamameFences.Clear();
+                _ropeEdamameFences.Clear();
             }
 
             _timerFence += Time.deltaTime;
@@ -99,8 +99,8 @@ public class Basket : MonoBehaviour
                 _hasCaughtRopeEdamame = true;
                 for (int i = 0; i < 3; ++i)
                 {
-                    _arrowEdamameFences.Add(Instantiate(_arrowEdamame_fencePrefab, new Vector3(-4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
-                    _arrowEdamameFences.Add(Instantiate(_arrowEdamame_fencePrefab, new Vector3(4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
+                    _ropeEdamameFences.Add(Instantiate(_ropeEdamame_fencePrefab, new Vector3(-4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
+                    _ropeEdamameFences.Add(Instantiate(_ropeEdamame_fencePrefab, new Vector3(4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
                 }
                 break;
 

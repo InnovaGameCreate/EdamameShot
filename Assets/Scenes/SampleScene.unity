@@ -1966,7 +1966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02dd78124ee45a49a7b2ef4c11daa27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _arrowEdamame_fencePrefab: {fileID: 2289146210213573302, guid: cc98c69efeb7ddd48b335e1a57d24e3b, type: 3}
+  _ropeEdamame_fencePrefab: {fileID: 2289146210213573302, guid: cc98c69efeb7ddd48b335e1a57d24e3b, type: 3}
   _maxTimeOfBigBasket: 10
   _maxTimeFence: 10
 --- !u!135 &2508589718422307968
