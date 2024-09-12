@@ -1896,9 +1896,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2176441722257346914}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: -0, z: 0, w: -0.00000019470718}
-  m_LocalPosition: {x: -0, y: -2.17, z: 0.8}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalRotation: {x: 1, y: -0, z: 1.6690598e-21, w: -0.00000019470718}
+  m_LocalPosition: {x: 0, y: -2.17, z: 0.80000067}
+  m_LocalScale: {x: 0.8000001, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1966,7 +1966,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02dd78124ee45a49a7b2ef4c11daa27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _arrowEdamame_fencePrefab: {fileID: 2289146210213573302, guid: cc98c69efeb7ddd48b335e1a57d24e3b, type: 3}
   _maxTimeOfBigBasket: 10
+  _maxTimeFence: 10
 --- !u!135 &2508589718422307968
 SphereCollider:
   m_ObjectHideFlags: 0

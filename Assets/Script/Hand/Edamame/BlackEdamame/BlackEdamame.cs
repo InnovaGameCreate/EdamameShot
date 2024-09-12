@@ -6,14 +6,12 @@ public class BlackEdamame : MonoBehaviour
 {
     [SerializeField] private GameObject _basket;
 
-    Rigidbody _rb;
+    private Rigidbody _rb;
 
-    [SerializeField] private float _exprosionForce;
-    [SerializeField] private float _exprosionX;
-    [SerializeField] private float _exprosionY;
-    [SerializeField] private float _exprosionZ;
-    [SerializeField] private float _exporsionRadius;
-    [SerializeField] private float _upWardsModifier;
+    // AddExprosionForce
+    [SerializeField] private float _explosionForce;
+    [SerializeField] private float _explosionRadius;
+    [SerializeField] private float _upwardsModifier;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +22,16 @@ public class BlackEdamame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other == _basket)
+        if (other.gameObject.name == _basket.name)
         {
-            _rb.AddExplosionForce(_exprosionForce, new Vector3(_exprosionX, _exprosionY, _exprosionZ), _exporsionRadius, _upWardsModifier);
+            _rb.AddExplosionForce(_explosionForce, new Vector3(3.823216e-08f, 0, -0.4233129f), _explosionRadius, _upwardsModifier, ForceMode.Impulse);
+
+            other.GetComponent<Basket>().CatchEdamame(KindOdEdamame.BlackEdamame);
+            Destroy(gameObject);
         }
     }
 }
