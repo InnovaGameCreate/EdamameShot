@@ -25,7 +25,7 @@ public class EdamameMgr : MonoBehaviour
     private GameObject _currentEdamame;
 
     // Ž}“¤‚ÌŽí—Þ
-    KindOdEdamame _kind;
+    KindEdamame _kind;
 
     // ‘S‚Ä‚ÌŽ}“¤‚ÌPrefab
     [SerializeField] private GameObject NORMAL_EDAMAME_PREFAB;
@@ -46,29 +46,29 @@ public class EdamameMgr : MonoBehaviour
         _angleX = 30;
         _angleY = 30;
 
-        _kind = KindOdEdamame.RopeEdamame;
+        _kind = KindEdamame.ClockEdamame;
 
         switch (_kind)
         {
-            case KindOdEdamame.NormalEdamame:
+            case KindEdamame.NormalEdamame:
                 _edamamePrefab = NORMAL_EDAMAME_PREFAB; break;
 
-            case KindOdEdamame.RainbowEdamame:
+            case KindEdamame.RainbowEdamame:
                 _edamamePrefab = RAINBOW_EDAMAME_PREFAB; break;
 
-            case KindOdEdamame.GoldenEdamame:
+            case KindEdamame.GoldenEdamame:
                 _edamamePrefab = GOLDEN_EDAMAME_PREFAB; break;
 
-            case KindOdEdamame.RopeEdamame:
+            case KindEdamame.RopeEdamame:
                 _edamamePrefab = ROPE_EDAMAME_PREFAB; break;
 
-            case KindOdEdamame.BlackEdamame:
+            case KindEdamame.BlackEdamame:
                 _edamamePrefab = BLACK_EDAMAME_PREFAB; break;
 
-            case KindOdEdamame.ClockEdamame:
+            case KindEdamame.ClockEdamame:
                 _edamamePrefab = CLOCK_EDAMAME_PREFAB; break;
 
-            case KindOdEdamame.ArrowEdamame:
+            case KindEdamame.ArrowEdamame:
                 _edamamePrefab = ARROW_EDAMAME_PREFAB; break;
 
             default:

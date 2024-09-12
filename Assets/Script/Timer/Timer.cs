@@ -41,4 +41,11 @@ public class Timer : MonoBehaviour
         _timeMinuteObj.GetComponent<Text>().text = minute.ToString();
         _timeSecondObj.GetComponent<Text>().text = (second >= 10) ? second.ToString() : $"0{second.ToString()}";
     }
+    
+    public void AddTime(float time)
+    {
+        _time += time;
+
+        ShowTime();
+    }
 }
