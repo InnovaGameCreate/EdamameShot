@@ -21,8 +21,8 @@ public class RopeEdamame : MonoBehaviour
     {
         if (other.gameObject.name == _basket.name)
         {
-            Debug.Log(_basket.gameObject.name);
             other.GetComponent<Basket>().CatchEdamame(KindEdamame.RopeEdamame);
+            gameObject.GetComponent<SphereCollider>().enabled = false;
 
             Destroy(gameObject);
         }

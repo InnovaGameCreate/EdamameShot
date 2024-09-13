@@ -15,9 +15,6 @@ public enum KindEdamame {
 
 public class Edamame : MonoBehaviour
 {
-    // 何の枝豆か
-    KindEdamame _kind;
-
     // Rigidbody
     private Rigidbody _rb;
 
@@ -35,9 +32,6 @@ public class Edamame : MonoBehaviour
 
         // 当たり判定無効化
         gameObject.GetComponent<Collider>().enabled = false;
-
-        // デフォルトは普通の枝豆
-        _kind = KindEdamame.NormalEdamame;
     }
 
     // Update is called once per frame
@@ -127,15 +121,6 @@ public class Edamame : MonoBehaviour
     private float TranslateAngleToRad(float angle)
     {
         return Mathf.PI / (180 / angle);
-    }
-
-    public void SetKind(KindEdamame kind)
-    {
-        _kind = kind;
-    }
-    public KindEdamame GetKind()
-    {
-        return _kind;
     }
 
     /// <summary>

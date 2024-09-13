@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowEdamame : MonoBehaviour
+public class GoldenEdamame : MonoBehaviour
 {
     // ÉJÉS
     [SerializeField] private GameObject _basket;
@@ -21,10 +21,11 @@ public class ArrowEdamame : MonoBehaviour
     {
         if (other.gameObject.name == _basket.name)
         {
-            other.GetComponent<Basket>().CatchEdamame(KindEdamame.ArrowEdamame);
+            other.GetComponent<Basket>().CatchEdamame(KindEdamame.GoldenEdamame);
             gameObject.GetComponent<SphereCollider>().enabled = false;
 
             Destroy(gameObject);
         }
     }
+
 }
