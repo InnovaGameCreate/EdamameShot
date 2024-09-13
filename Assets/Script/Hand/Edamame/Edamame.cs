@@ -28,7 +28,7 @@ public class Edamame : MonoBehaviour
     private Fever _fever;
     private GameObject _basketObj;
 
-    private bool _hasShot;
+    private bool _isActiveFever;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,7 @@ public class Edamame : MonoBehaviour
         // 当たり判定無効化
         gameObject.GetComponent<Collider>().enabled = false;
 
-        _hasShot = false;
+        _isActiveFever = false;
     }
 
     // Update is called once per frame
@@ -50,36 +50,6 @@ public class Edamame : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    //private void FixedUpdate()
-    //{
-    //    if (_hasShot)
-    //    {
-    //        if (_fever.GetIsFever())
-    //        {
-    //            gameObject.GetComponent<Collider>().enabled = false;
-
-    //            float x = transform.position.x;
-    //            float y = transform.position.y;
-    //            float z = transform.position.z;
-
-    //            float basX = _basketObj.transform.position.x;
-    //            float basY = _basketObj.transform.position.y;
-    //            float basZ = _basketObj.transform.position.z;
-
-    //            float deltaX = basX - x;
-    //            float deltaY = basY - y;
-    //            float deltaZ = basZ - z;
-
-    //            _rb.AddForce(deltaX, deltaY, deltaZ);
-
-    //        } else
-    //        {
-    //            gameObject.GetComponent<Collider>().enabled = true;
-    //            _hasShot = false;
-    //        }
-    //    }
-    //}
 
     /// <summary>
     /// 枝豆発射
@@ -106,13 +76,16 @@ public class Edamame : MonoBehaviour
         _rb.AddForce(new Vector3(deltaX, deltaY, deltaZ), ForceMode.Impulse);
 
         gameObject.GetComponent<Collider>().enabled = true;
-
-        _hasShot = true;
     }
 
-    public bool GetHasShot()
+    public bool GetIsActiveFever()
     {
-        return _hasShot;
+        return _isActiveFever;
+    }
+
+    public void SetIsActiveFever(bool isactive)
+    {
+        _isActiveFever = isactive;
     }
 
     /// <summary>

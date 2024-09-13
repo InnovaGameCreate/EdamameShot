@@ -47,6 +47,10 @@ public class Basket : MonoBehaviour
     [SerializeField] private GameObject _feverObj;
     private Fever _fever;
 
+    // ‚©‚²‚Ì‘¬“x
+    [SerializeField] float _speed;
+    [SerializeField] private float _maxX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +100,15 @@ public class Basket : MonoBehaviour
 
             _timerFence += Time.deltaTime;
         }
+
+        // “®‚©‚·
+        float x = transform.position.x;
+        if (x > _maxX || x < _maxX)
+        {
+            x *= -1;
+        }
+        x += _speed * Time.deltaTime;
+        transform.Translate(new Vector3(x, 0, 0));
     }
 
     /// <summary>
@@ -161,7 +174,7 @@ public class Basket : MonoBehaviour
             List<GameObject> edamamesOnField = new List<GameObject>();
             for (int i = 0; i < alledamames.Length; ++i)
             {
-                if (alledamames[i].GetComponent<Edamame>().GetHasShot())
+                if (alledamames[i].GetComponent<Edamame>().GetIsActiveFever())
                 {
                     edamamesOnField.Add(alledamames[i]);
                 }
