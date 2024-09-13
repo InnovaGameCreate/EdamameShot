@@ -6,11 +6,14 @@ using UnityEngine;
 public class Basket : MonoBehaviour
 {
     // どの枝豆か
-    private KindOdEdamame _kind;
+    private KindEdamame _kind;
 
     // 柵のPrefab
     [SerializeField] private GameObject _ropeEdamame_fencePrefab;
     private List<GameObject> _ropeEdamameFences;
+
+    // タイマー
+    [SerializeField] private GameObject _timerObj;
 
     // 矢印枝豆をキャッチしたか
     private bool _hasCaughtArrowEdamame;
@@ -78,40 +81,44 @@ public class Basket : MonoBehaviour
     /// 枝豆をキャッチしたとき
     /// </summary>
     /// <param name="kind"> 枝豆の種類 </param>
-    public void CatchEdamame(KindOdEdamame kind)
+    public void CatchEdamame(KindEdamame kind)
     {
         _kind = kind;
         switch (_kind)
         {
-            case KindOdEdamame.NormalEdamame:
+            case KindEdamame.NormalEdamame:
                 break;
 
-            case KindOdEdamame.ArrowEdamame:
+            case KindEdamame.ArrowEdamame:
                 _hasCaughtArrowEdamame = true;
                 gameObject.transform.localScale = new Vector3(1.5f, 0.8f, 0.8f);
 
                 break;
 
-            case KindOdEdamame.ClockEdamame:
+            case KindEdamame.ClockEdamame:
+                _timerObj.GetComponent<Timer>().AddTime(10);
                 break;
 
-            case KindOdEdamame.RopeEdamame:
-                _hasCaughtRopeEdamame = true;
-                for (int i = 0; i < 3; ++i)
+            case KindEdamame.RopeEdamame:
+                if (!_hasCaughtRopeEdamame)
                 {
-                    _ropeEdamameFences.Add(Instantiate(_ropeEdamame_fencePrefab, new Vector3(-4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
-                    _ropeEdamameFences.Add(Instantiate(_ropeEdamame_fencePrefab, new Vector3(4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        _ropeEdamameFences.Add(Instantiate(_ropeEdamame_fencePrefab, new Vector3(-4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
+                        _ropeEdamameFences.Add(Instantiate(_ropeEdamame_fencePrefab, new Vector3(4.54f, 2.65f, 5.8f - 1.5f * i), Quaternion.identity));
+                    }
                 }
+                _hasCaughtRopeEdamame = true;
                 break;
 
-            case KindOdEdamame.BlackEdamame:
+            case KindEdamame.BlackEdamame:
                 // ステージ中央を爆発
                 break;
 
-            case KindOdEdamame.RainbowEdamame:
+            case KindEdamame.RainbowEdamame:
                 break;
 
-            case KindOdEdamame.GoldenEdamame:
+            case KindEdamame.GoldenEdamame:
                 break;
         }
     }

@@ -22,7 +22,7 @@ public class RopeEdamame : MonoBehaviour
         if (other.gameObject.name == _basket.name)
         {
             Debug.Log(_basket.gameObject.name);
-            other.GetComponent<Basket>().CatchEdamame(KindOdEdamame.RopeEdamame);
+            other.GetComponent<Basket>().CatchEdamame(KindEdamame.RopeEdamame);
 
             Destroy(gameObject);
         }

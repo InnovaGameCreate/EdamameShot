@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum KindOdEdamame { 
+public enum KindEdamame { 
     NormalEdamame,
     RainbowEdamame,
     GoldenEdamame,
@@ -16,7 +16,7 @@ public enum KindOdEdamame {
 public class Edamame : MonoBehaviour
 {
     // 何の枝豆か
-    KindOdEdamame _kind;
+    KindEdamame _kind;
 
     // Rigidbody
     private Rigidbody _rb;
@@ -37,7 +37,7 @@ public class Edamame : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = false;
 
         // デフォルトは普通の枝豆
-        _kind = KindOdEdamame.NormalEdamame;
+        _kind = KindEdamame.NormalEdamame;
     }
 
     // Update is called once per frame
@@ -124,11 +124,11 @@ public class Edamame : MonoBehaviour
         return Mathf.PI / (180 / angle);
     }
 
-    public void SetKind(KindOdEdamame kind)
+    public void SetKind(KindEdamame kind)
     {
         _kind = kind;
     }
-    public KindOdEdamame GetKind()
+    public KindEdamame GetKind()
     {
         return _kind;
     }
