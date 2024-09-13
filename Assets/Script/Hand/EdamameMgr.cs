@@ -46,7 +46,7 @@ public class EdamameMgr : MonoBehaviour
         _angleX = 30;
         _angleY = 30;
 
-        _kind = KindEdamame.ClockEdamame;
+        _kind = KindEdamame.BlackEdamame;
 
         switch (_kind)
         {
