@@ -15,13 +15,13 @@ public enum KindEdamame {
 
 public class Edamame : MonoBehaviour
 {
-    // ‰½‚Ì}“¤‚©
+    // ä½•ã®æè±†ã‹
     KindEdamame _kind;
 
     // Rigidbody
     private Rigidbody _rb;
 
-    // }“¤‚Ìƒpƒ‰ƒ[ƒ^
+    // æè±†ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
     [SerializeField] private float _impulseX;
     [SerializeField] private float _impulseY;
     [SerializeField] private float _impulseZ;
@@ -33,17 +33,22 @@ public class Edamame : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
 
-        // “–‚½‚è”»’è–³Œø‰»
+        // å½“ãŸã‚Šåˆ¤å®šç„¡åŠ¹åŒ–
         gameObject.GetComponent<Collider>().enabled = false;
 
-        // ƒfƒtƒHƒ‹ƒg‚Í•’Ê‚Ì}“¤
+        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯æ™®é€šã®æè±†
         _kind = KindEdamame.NormalEdamame;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // —‚¿‚Äs‚Á‚½‚çíœ
+        if(Fever.FeverNeeds == Fever.FeverCount)
+        {
+            gameObject.GetComponent<Collider>().enabled = false;
+        }
+        
+        // è½ã¡ã¦è¡Œã£ãŸã‚‰å‰Šé™¤
         if (transform.position.y < -5)
         {
             Destroy(gameObject);
@@ -51,37 +56,37 @@ public class Edamame : MonoBehaviour
     }
 
     /// <summary>
-    /// }“¤”­Ë
+    /// æè±†ç™ºå°„
     /// </summary>
-    /// <param name="angleX"> ‰¡‚ÌŠp“x </param>
-    /// <param name="angleY"> c‚ÌŠp“x </param>
+    /// <param name="angleX"> æ¨ªã®è§’åº¦ </param>
+    /// <param name="angleY"> ç¸¦ã®è§’åº¦ </param>
     public void ShootEdamame(float angleX, float angleY)
     {
-        // Šp“xİ’è
+        // è§’åº¦è¨­å®š
         SetAngle(angleX, angleY);
 
-        // Šp“x‚ğŒÊ“x–@‚É•ÏŠ·
+        // è§’åº¦ã‚’å¼§åº¦æ³•ã«å¤‰æ›
         float radX = TranslateAngleToRad(_angleX);
         float radY = TranslateAngleToRad(_angleY);
 
-        // ˆÚ“®—Ê‚ğŠp“x‚©‚çŒvZ
+        // ç§»å‹•é‡ã‚’è§’åº¦ã‹ã‚‰è¨ˆç®—
         float deltaX = Mathf.Cos(radX) * _impulseX;
         float deltaY = Mathf.Sin(radY) * _impulseY;
         float deltaZ = _impulseZ;
 
-        // d—Í‚ğ“K—p
+        // é‡åŠ›ã‚’é©ç”¨
         _rb.useGravity = true;
-        // ”­Ë
+        // ç™ºå°„
         _rb.AddForce(new Vector3(deltaX, deltaY, deltaZ), ForceMode.Impulse);
 
         gameObject.GetComponent<Collider>().enabled = true;
     }
 
     /// <summary>
-    /// }“¤‚ÌŠp“x‚Ìİ’è
+    /// æè±†ã®è§’åº¦ã®è¨­å®š
     /// </summary>
-    /// <param name="angleX"> ‰¡‚ÌŠp“x </param>
-    /// <param name="angleY"> c‚ÌŠp“x </param>
+    /// <param name="angleX"> æ¨ªã®è§’åº¦ </param>
+    /// <param name="angleY"> ç¸¦ã®è§’åº¦ </param>
     public void SetAngle(float angleX, float angleY)
     {
         if (angleX < 0)
@@ -115,10 +120,10 @@ public class Edamame : MonoBehaviour
     }
 
     /// <summary>
-    /// Šp“x–@‚ğŒÊ“x–@‚É•ÏŠ·
+    /// è§’åº¦æ³•ã‚’å¼§åº¦æ³•ã«å¤‰æ›
     /// </summary>
-    /// <param name="angle"> Šp“x(Šp“x–@) </param>
-    /// <returns> Šp“x(ŒÊ“x–@) </returns>
+    /// <param name="angle"> è§’åº¦(è§’åº¦æ³•) </param>
+    /// <returns> è§’åº¦(å¼§åº¦æ³•) </returns>
     private float TranslateAngleToRad(float angle)
     {
         return Mathf.PI / (180 / angle);
@@ -134,29 +139,29 @@ public class Edamame : MonoBehaviour
     }
 
     /// <summary>
-    /// }“¤‚ğ”­Ë‚·‚éŠp“x(X)
+    /// æè±†ã‚’ç™ºå°„ã™ã‚‹è§’åº¦(X)
     /// </summary>
-    /// <returns> Šp“x(X) </returns>
+    /// <returns> è§’åº¦(X) </returns>
     public float GetAngleX() { return _angleX; }
     /// <summary>
-    /// }“¤‚ğ”­Ë‚·‚éŠp“x(Y)
+    /// æè±†ã‚’ç™ºå°„ã™ã‚‹è§’åº¦(Y)
     /// </summary>
-    /// <returns> Šp“x(Y) </returns>
+    /// <returns> è§’åº¦(Y) </returns>
     public float GetAngleY() { return _angleY; }
 
     /// <summary>
-    /// }“¤‚ğ”­Ë‚·‚é—Í(X)
+    /// æè±†ã‚’ç™ºå°„ã™ã‚‹åŠ›(X)
     /// </summary>
-    /// <returns> —Í(X) </returns>
+    /// <returns> åŠ›(X) </returns>
     public float GetImpulseX() { return _impulseX; }
     /// <summary>
-    /// }“¤‚ğ”­Ë‚·‚é—Í(Y)
+    /// æè±†ã‚’ç™ºå°„ã™ã‚‹åŠ›(Y)
     /// </summary>
-    /// <returns> —Í(Y) </returns>
+    /// <returns> åŠ›(Y) </returns>
     public float GetImpulseY() { return _impulseY; }
     /// <summary>
-    /// }“¤‚ğ”­Ë‚·‚é—Í(Z)
+    /// æè±†ã‚’ç™ºå°„ã™ã‚‹åŠ›(Z)
     /// </summary>
-    /// <returns> —Í(Z) </returns>
+    /// <returns> åŠ›(Z) </returns>
     public float GetImpulseZ() { return _impulseZ; }
 }
