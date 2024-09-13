@@ -726,7 +726,7 @@ GameObject:
   - component: {fileID: 712293980}
   - component: {fileID: 712293979}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Fever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -739,18 +739,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712293975}
-  m_LocalRotation: {x: -0.196374, y: -0, z: -0, w: 0.98052907}
-  m_LocalPosition: {x: 0, y: 0, z: -955.1569}
-  m_LocalScale: {x: 1.4897238, y: 1.4897238, z: 1.4897238}
+  m_LocalRotation: {x: -0.13885732, y: 0.13885732, z: 0.69333875, w: 0.69333875}
+  m_LocalPosition: {x: 0, y: 0, z: 24}
+  m_LocalScale: {x: 0.85, y: 6, z: 1.4897238}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 656339994}
   - {fileID: 1998209108}
   m_Father: {fileID: 1100720539}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -22.65, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 969.5724, y: -48.407257}
+  m_AnchoredPosition: {x: -398, y: -106}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &712293977
@@ -812,7 +812,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.192
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2766,6 +2766,7 @@ MonoBehaviour:
   _timerObj: {fileID: 1875353310}
   _maxTimeOfBigBasket: 10
   _maxTimeFence: 10
+  _feverObj: {fileID: 712293975}
 --- !u!135 &2508589718422307968
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class Fever : MonoBehaviour
     [SerializeField] private float needs;　//フィーバーに必要な数
 
     public static float FeverTimed=0; //Fever経過時間
-    public static float FeverCount=3; //FeverTime中ならばFeverNeeds==FeverCount==needs
+    public static float FeverCount=0; //FeverTime中ならばFeverNeeds==FeverCount==needs
 
     // Start is called before the first frame update
     void Start()
@@ -37,14 +37,11 @@ public class Fever : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void AddFeverGauge()
     {
-        if (other.gameObject.CompareTag("RainbowBeans")) //豆側に識別用のTagが欲しい
+        if (FeverCount < FeverNeeds)
         {
-            if (FeverCount < FeverNeeds)
-            {
-                FeverCount++;
-            }
+            FeverCount++;
         }
     }
 }

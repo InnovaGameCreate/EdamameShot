@@ -31,7 +31,6 @@ public class BlackEdamame : MonoBehaviour
             _rb.AddExplosionForce(_explosionForce, new Vector3(3.823216e-08f, 0, -0.4233129f), _explosionRadius, _upwardsModifier, ForceMode.Impulse);
 
             other.GetComponent<Basket>().CatchEdamame(KindEdamame.BlackEdamame);
-            gameObject.GetComponent<SphereCollider>().enabled = false;
 
             Destroy(gameObject);
         }

@@ -43,6 +43,9 @@ public class Basket : MonoBehaviour
     // 柵がどれだけ出ているか
     private float _timerFence;
 
+    // フィーバー
+    [SerializeField] private GameObject _feverObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -137,6 +140,8 @@ public class Basket : MonoBehaviour
 
             case KindEdamame.RainbowEdamame:
                 _score.AddScore(_rainbowEdamameScore);
+
+                _feverObj.GetComponent<Fever>().AddFeverGauge();
                 break;
 
             case KindEdamame.GoldenEdamame:
