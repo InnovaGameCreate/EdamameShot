@@ -36,6 +36,10 @@ public class EdamameMgr : MonoBehaviour
     [SerializeField] private GameObject CLOCK_EDAMAME_PREFAB;
     [SerializeField] private GameObject ARROW_EDAMAME_PREFAB;
 
+    // é}ì§ÇÃèoÇÈämó¶
+    [SerializeField] private int[] _howEdamameShow;
+    private int[] _howEdamameRandRange;
+
     // écíeÇÃä«óùÇ∑ÇÈÉIÉuÉWÉFÉNÉg
     [SerializeField] private GameObject _remainingEdamameMgrObj;
     private RemainingEdamameMgr _remainingEdamameMgr;
@@ -46,7 +50,70 @@ public class EdamameMgr : MonoBehaviour
         _angleX = 30;
         _angleY = 30;
 
-        _kind = KindEdamame.BlackEdamame;
+
+        _howEdamameRandRange = new int[7];
+        _kind = new KindEdamame();
+        _remainingEdamameMgr = _remainingEdamameMgrObj.GetComponent<RemainingEdamameMgr>();
+
+        CreateNewEdamame();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isShoot())
+        {
+            if (!_remainingEdamameMgr.DeleteRemainingEdamame())
+                return;
+
+            Edamame edamame = _currentEdamame.GetComponent<Edamame>();
+            edamame.ShootEdamame(_angleX, _angleY);// é}ì§î≠éÀ
+
+            CreateNewEdamame();
+        }
+
+        // äpìxí≤êÆ
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            _angleX += _speedAngle * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            _angleX -= _speedAngle * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            _angleY += _speedAngle * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            _angleY -= _speedAngle * Time.deltaTime;
+        }
+        CheckAngleRange();  // äpìxÇêßå¿
+    }
+
+    public void CreateNewEdamame()
+    {
+        for (int i = 0; i < _howEdamameShow.Length; ++i)
+        {
+            if (i == 0)
+            {
+                _howEdamameRandRange[0] = _howEdamameShow[0];
+                continue;
+            }
+
+            _howEdamameRandRange[i] = _howEdamameRandRange[i - 1] + _howEdamameShow[i];
+        }
+
+        int randEdamame = Random.Range(0, _howEdamameRandRange[6] + 1);
+        for (int i = _howEdamameRandRange.Length - 1; i >= 0; --i)
+        {
+            if (randEdamame >= _howEdamameRandRange[i])
+            {
+                _kind = (KindEdamame)i;
+                break;
+            }
+        }
 
         switch (_kind)
         {
@@ -76,42 +143,6 @@ public class EdamameMgr : MonoBehaviour
         }
 
         _currentEdamame = Instantiate(_edamamePrefab);// é}ì§ê∂ê¨
-
-        _remainingEdamameMgr = _remainingEdamameMgrObj.GetComponent<RemainingEdamameMgr>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isShoot())
-        {
-            if (!_remainingEdamameMgr.DeleteRemainingEdamame())
-                return;
-
-            Edamame edamame = _currentEdamame.GetComponent<Edamame>();
-            edamame.ShootEdamame(_angleX, _angleY);// é}ì§î≠éÀ
-
-            _currentEdamame = Instantiate(_edamamePrefab);// êVÇµÇ¢é}ì§ê∂ê¨
-        }
-
-        // äpìxí≤êÆ
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            _angleX += _speedAngle * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            _angleX -= _speedAngle * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            _angleY += _speedAngle * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            _angleY -= _speedAngle * Time.deltaTime;
-        }
-        CheckAngleRange();  // äpìxÇêßå¿
     }
 
     /// <summary>
