@@ -28,6 +28,10 @@ public class Edamame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Fever.FeverNeeds == Fever.FeverCount)
+        {
+            gameObject.GetComponent<Collider>().enabled = false;
+        }
     }
 
     /// <summary>
