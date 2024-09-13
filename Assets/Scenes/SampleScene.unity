@@ -604,7 +604,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624986999}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1094,11 +1094,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 624987000}
   - {fileID: 388334384}
   - {fileID: 1875353311}
   - {fileID: 1215719937}
   - {fileID: 712293976}
+  - {fileID: 624987000}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 22.65, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1877,7 +1877,7 @@ MonoBehaviour:
   BLACK_EDAMAME_PREFAB: {fileID: 6046167177539408148, guid: a1e7e8a4a780b6243a44298d43d31bdd, type: 3}
   CLOCK_EDAMAME_PREFAB: {fileID: 2644822432842191636, guid: a219a13d742820f4ebcc2b19cef98562, type: 3}
   ARROW_EDAMAME_PREFAB: {fileID: 7110618928282775527, guid: 28460a88d7f6e824388c68a35a5a55cb, type: 3}
-  _howEdamameShow: 320000000a0000000700000009000000070000000900000008000000
+  _howEdamameShow: 320000000a0000000700000064000000070000000900000008000000
   _remainingEdamameMgrObj: {fileID: 530836857}
 --- !u!65 &1460091395
 BoxCollider:
@@ -2844,7 +2844,7 @@ MonoBehaviour:
   _blackEdamameScore: 1
   _rainbowEdamameScore: 3
   _goldenEdamameScore: 5
-  _ropeEdamame_fencePrefab: {fileID: 2289146210213573302, guid: cc98c69efeb7ddd48b335e1a57d24e3b, type: 3}
+  _ropeEdamame_fencePrefab: {fileID: 7216118141292408032, guid: cc98c69efeb7ddd48b335e1a57d24e3b, type: 3}
   _timerObj: {fileID: 1875353310}
   _maxTimeOfBigBasket: 10
   _maxTimeFence: 10
