@@ -722,9 +722,8 @@ GameObject:
   m_Component:
   - component: {fileID: 712293976}
   - component: {fileID: 712293978}
-  - component: {fileID: 712293977}
   - component: {fileID: 712293980}
-  - component: {fileID: 712293979}
+  - component: {fileID: 712293981}
   m_Layer: 5
   m_Name: Fever
   m_TagString: Untagged
@@ -753,18 +752,6 @@ RectTransform:
   m_AnchoredPosition: {x: -398, y: -106}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &712293977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712293975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b77f07febf972f241a5e9a6d7d2f814a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &712293978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,18 +803,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &712293979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712293975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b77f07febf972f241a5e9a6d7d2f814a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &712293980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,8 +815,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665ea432ef932e74db434388285dc809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 10
-  needs: 5
+  _feverTime: 10
+  _feverNeeds: 1
+--- !u!114 &712293981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712293975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77f07febf972f241a5e9a6d7d2f814a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,7 +1782,7 @@ MonoBehaviour:
   BLACK_EDAMAME_PREFAB: {fileID: 6046167177539408148, guid: a1e7e8a4a780b6243a44298d43d31bdd, type: 3}
   CLOCK_EDAMAME_PREFAB: {fileID: 2644822432842191636, guid: a219a13d742820f4ebcc2b19cef98562, type: 3}
   ARROW_EDAMAME_PREFAB: {fileID: 7110618928282775527, guid: 28460a88d7f6e824388c68a35a5a55cb, type: 3}
-  _howEdamameShow: 320000000a0000000700000009000000070000000900000008000000
+  _howEdamameShow: 00000000640000000000000000000000000000000000000000000000
   _remainingEdamameMgrObj: {fileID: 530836857}
 --- !u!65 &1460091395
 BoxCollider:

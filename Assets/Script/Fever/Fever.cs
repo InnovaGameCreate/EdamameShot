@@ -5,43 +5,59 @@ using UnityEngine;
 
 public class Fever : MonoBehaviour
 {
-    [SerializeField] public static float FeverNeeds;
-    [SerializeField] public static float FeverTime;
-    [SerializeField] private float time; //フィーバー時間
-    [SerializeField] private float needs;　//フィーバーに必要な数
+    [SerializeField] private float _feverTime; //フィーバー時間
+    [SerializeField] private int _feverNeeds;　//フィーバーに必要な数
 
-    public static float FeverTimed=0; //Fever経過時間
-    public static float FeverCount=0; //FeverTime中ならばFeverNeeds==FeverCount==needs
+    private float FeverTimed = 0; //Fever経過時間
+    private int FeverCount = 0; //FeverTime中ならばFeverNeeds==FeverCount==needs
+
+    private bool _isFever;
 
     // Start is called before the first frame update
     void Start()
     {
-        FeverNeeds = needs;
-        FeverTime = time;
+        _isFever = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (FeverCount >= FeverNeeds)
+        if (FeverCount >= _feverNeeds)
         {
-            if(FeverTimed < FeverTime)
+            if(FeverTimed < _feverTime)
             {
                 FeverTimed += Time.deltaTime;
+                _isFever = true;
             }
             else
             {
                 FeverTimed = 0;
                 FeverCount = 0;
+                _isFever = false;
             }
         }
     }
 
     public void AddFeverGauge()
     {
-        if (FeverCount < FeverNeeds)
+        if (FeverCount < _feverNeeds)
         {
             FeverCount++;
         }
+    }
+
+    public bool GetIsFever()
+    {
+        return _isFever;
+    }
+
+    public int GetFeverCount()
+    {
+        return FeverCount;
+    }
+
+    public int GetFeverNeeds()
+    {
+        return _feverNeeds;
     }
 }

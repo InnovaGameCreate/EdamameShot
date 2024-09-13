@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowEdamame
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 17b9e923f204a2c439a5f6ea44404c9f, type: 3}
+      propertyPath: m_TagString
+      value: Edamame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
