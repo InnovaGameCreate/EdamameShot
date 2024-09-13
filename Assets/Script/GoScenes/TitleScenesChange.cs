@@ -16,7 +16,7 @@ public class TitleScenesChange : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))    //スペースキーを押すとスクリーン遷移
         {
-            SceneManager.LoadScene("GameScene");  //GameSceneを仮の遷移先
+            SceneManager.LoadScene("SampleScene");  //GameSceneを仮の遷移先
         }
         if (Input.GetKey(KeyCode.Return))    //enterキーを押すとスクリーン遷移
         {
