@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Fever : MonoBehaviour
 {
-
     [SerializeField] public static float FeverNeeds;
     [SerializeField] public static float FeverTime;
     [SerializeField] private float time; //フィーバー時間
@@ -13,7 +12,6 @@ public class Fever : MonoBehaviour
 
     public static float FeverTimed=0; //Fever経過時間
     public static float FeverCount=3; //FeverTime中ならばFeverNeeds==FeverCount==needs
-
 
     // Start is called before the first frame update
     void Start()
@@ -47,10 +45,6 @@ public class Fever : MonoBehaviour
             {
                 FeverCount++;
             }
-            
         }
     }
 }
-
-
-
