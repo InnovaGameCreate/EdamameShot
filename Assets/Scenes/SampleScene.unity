@@ -2747,7 +2747,7 @@ Transform:
   m_GameObject: {fileID: 2176441722257346914}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: -0, z: 1.6690598e-21, w: -0.00000019470718}
-  m_LocalPosition: {x: -0, y: -2.17, z: 1.16}
+  m_LocalPosition: {x: -4.96, y: -2.17, z: 1.16}
   m_LocalScale: {x: 0.8000001, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2849,8 +2849,8 @@ MonoBehaviour:
   _maxTimeOfBigBasket: 10
   _maxTimeFence: 10
   _feverObj: {fileID: 712293975}
-  _speed: 0
-  _maxX: 0
+  _speed: 1
+  _maxX: 10
 --- !u!135 &2508589718422307968
 SphereCollider:
   m_ObjectHideFlags: 0

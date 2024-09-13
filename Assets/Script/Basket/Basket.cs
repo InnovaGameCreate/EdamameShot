@@ -51,9 +51,13 @@ public class Basket : MonoBehaviour
     [SerializeField] float _speed;
     [SerializeField] private float _maxX;
 
+    float _time;
+
     // Start is called before the first frame update
     void Start()
     {
+        _time = 0;
+
         _hasCaughtArrowEdamame = false;
         _hasCaughtRopeEdamame = false;
 
@@ -100,15 +104,17 @@ public class Basket : MonoBehaviour
 
             _timerFence += Time.deltaTime;
         }
+        _time += Time.deltaTime;
 
         // “®‚©‚·
         float x = transform.position.x;
-        if (x > _maxX || x < _maxX)
+        if (Mathf.Abs(_speed * _time) >= _maxX)
         {
-            x *= -1;
+            _speed *= -1;
+            _time = 0;
         }
-        x += _speed * Time.deltaTime;
-        transform.Translate(new Vector3(x, 0, 0));
+        transform.Translate(new Vector3(_speed * Time.deltaTime, 0, 0));
+
     }
 
     /// <summary>
