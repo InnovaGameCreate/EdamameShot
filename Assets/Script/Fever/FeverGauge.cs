@@ -5,16 +5,19 @@ using UnityEngine.UI;
 
 public class FeverGauge : MonoBehaviour
 {
-    public Slider slider;
+    Fever _fever;
+
     // Start is called before thue first frame update
     void Start()
     {
-        
+        _fever = GetComponent<Fever>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        slider.value = Fever.FeverCount/Fever.FeverNeeds;
+        int count = _fever.GetFeverCount();
+        float need = _fever.GetFeverNeeds();
+        gameObject.GetComponent<Slider>().value = (float)(count / need);
     }
 }

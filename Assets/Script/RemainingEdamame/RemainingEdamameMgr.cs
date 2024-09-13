@@ -87,6 +87,7 @@ public class RemainingEdamameMgr : MonoBehaviour
         {
             _remainingEdamameImgMasksObj[i].GetComponent<RectMask2D>().padding = new Vector4(0, _maxMaskBottom, 0, 0);
         }
+        _time = 0;
 
         return true;
     }

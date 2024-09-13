@@ -43,6 +43,10 @@ public class Basket : MonoBehaviour
     // 柵がどれだけ出ているか
     private float _timerFence;
 
+    // フィーバー
+    [SerializeField] private GameObject _feverObj;
+    private Fever _fever;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +59,8 @@ public class Basket : MonoBehaviour
         _ropeEdamameFences = new List<GameObject>();
 
         _score = _scoreObj.GetComponent<Score>();
+
+        _fever = _feverObj.GetComponent<Fever>();
     }
 
     // Update is called once per frame
@@ -137,11 +143,48 @@ public class Basket : MonoBehaviour
 
             case KindEdamame.RainbowEdamame:
                 _score.AddScore(_rainbowEdamameScore);
+
+                _feverObj.GetComponent<Fever>().AddFeverGauge();
                 break;
 
             case KindEdamame.GoldenEdamame:
                 _score.AddScore(_goldenEdamameScore);
                 break;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (_fever.GetIsFever())
+        {
+            GameObject[] alledamames = GameObject.FindGameObjectsWithTag("Edamame");
+            List<GameObject> edamamesOnField = new List<GameObject>();
+            for (int i = 0; i < alledamames.Length; ++i)
+            {
+                if (alledamames[i].GetComponent<Edamame>().GetHasShot())
+                {
+                    edamamesOnField.Add(alledamames[i]);
+                }
+            }
+
+            for (int i = 0; i < edamamesOnField.Count; ++i)
+            {
+                float x = edamamesOnField[i].transform.position.x;
+                float y = edamamesOnField[i].transform.position.y;
+                float z = edamamesOnField[i].transform.position.z;
+
+                float basX = transform.position.x;
+                float basY = transform.position.y;
+                float basZ = transform.position.z;
+
+                float deltaX = basX - x;
+                float deltaY = basY - y;
+                float deltaZ = basZ - z;
+
+                edamamesOnField[i].GetComponent<Collider>().isTrigger = true;
+                edamamesOnField[i].GetComponent<Rigidbody>().useGravity = false;
+                edamamesOnField[i].GetComponent<Rigidbody>().AddForce(new Vector3(deltaX, deltaY, deltaZ) * 10);
+            }
         }
     }
 }

@@ -105,15 +105,27 @@ public class EdamameMgr : MonoBehaviour
             _howEdamameRandRange[i] = _howEdamameRandRange[i - 1] + _howEdamameShow[i];
         }
 
-        int randEdamame = Random.Range(0, _howEdamameRandRange[6] + 1);
-        for (int i = _howEdamameRandRange.Length - 1; i >= 0; --i)
+        int randEdamame = Random.Range(1, _howEdamameRandRange[6] + 1);
+        for (int i = 0; i < _howEdamameRandRange.Length; ++i)
         {
-            if (randEdamame >= _howEdamameRandRange[i])
+            if (i == 0)
+            {
+                if (randEdamame <= _howEdamameRandRange[0])
+                {
+                    _kind = (KindEdamame)i;
+                    break;
+                }
+
+                continue;
+            }
+
+            if (randEdamame >= _howEdamameRandRange[i - 1] && randEdamame <= _howEdamameRandRange[i])
             {
                 _kind = (KindEdamame)i;
                 break;
             }
         }
+
 
         switch (_kind)
         {

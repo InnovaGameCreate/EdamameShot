@@ -22,7 +22,6 @@ public class ClockEdamame : MonoBehaviour
         if (other.gameObject.name == _basket.name)
         {
             other.GetComponent<Basket>().CatchEdamame(KindEdamame.ClockEdamame);
-            gameObject.GetComponent<SphereCollider>().enabled = false;
 
             Destroy(gameObject);
         }

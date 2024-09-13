@@ -25,6 +25,11 @@ public class Edamame : MonoBehaviour
     private float _angleX;
     private float _angleY;
 
+    private Fever _fever;
+    private GameObject _basketObj;
+
+    private bool _hasShot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,22 +37,49 @@ public class Edamame : MonoBehaviour
 
         // 当たり判定無効化
         gameObject.GetComponent<Collider>().enabled = false;
+
+        _hasShot = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Fever.FeverNeeds == Fever.FeverCount)
-        {
-            gameObject.GetComponent<Collider>().enabled = false;
-        }
-        
         // 落ちて行ったら削除
         if (transform.position.y < -5)
         {
             Destroy(gameObject);
         }
     }
+
+    //private void FixedUpdate()
+    //{
+    //    if (_hasShot)
+    //    {
+    //        if (_fever.GetIsFever())
+    //        {
+    //            gameObject.GetComponent<Collider>().enabled = false;
+
+    //            float x = transform.position.x;
+    //            float y = transform.position.y;
+    //            float z = transform.position.z;
+
+    //            float basX = _basketObj.transform.position.x;
+    //            float basY = _basketObj.transform.position.y;
+    //            float basZ = _basketObj.transform.position.z;
+
+    //            float deltaX = basX - x;
+    //            float deltaY = basY - y;
+    //            float deltaZ = basZ - z;
+
+    //            _rb.AddForce(deltaX, deltaY, deltaZ);
+
+    //        } else
+    //        {
+    //            gameObject.GetComponent<Collider>().enabled = true;
+    //            _hasShot = false;
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// 枝豆発射
@@ -74,6 +106,13 @@ public class Edamame : MonoBehaviour
         _rb.AddForce(new Vector3(deltaX, deltaY, deltaZ), ForceMode.Impulse);
 
         gameObject.GetComponent<Collider>().enabled = true;
+
+        _hasShot = true;
+    }
+
+    public bool GetHasShot()
+    {
+        return _hasShot;
     }
 
     /// <summary>

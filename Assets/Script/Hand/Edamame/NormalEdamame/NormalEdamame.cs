@@ -22,7 +22,6 @@ public class NormalEdamame : MonoBehaviour
         if (other.gameObject.name == _basket.name)
         {
             other.GetComponent<Basket>().CatchEdamame(KindEdamame.NormalEdamame);
-            gameObject.GetComponent<SphereCollider>().enabled = false;
 
             Destroy(gameObject);
         }
