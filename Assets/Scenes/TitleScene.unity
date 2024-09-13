@@ -357,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &253734807
 RectTransform:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253734806}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b2d586dd4724ac41923af86268d3256, type: 3}
   m_Name: 
@@ -396,7 +396,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253734806}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dff0327005da414c8a3115bd498ad7d, type: 3}
   m_Name: 
@@ -3247,6 +3247,8 @@ MonoBehaviour:
   _maxTimeOfBigBasket: 10
   _maxTimeFence: 10
   _feverObj: {fileID: 1310248799}
+  _speed: 0
+  _maxX: 0
 --- !u!135 &1885703608
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3388,6 +3390,7 @@ MonoBehaviour:
   _intervalRemainingTime: 1
   _maxMaskBottom: 47.1
   _minMaskBottom: 17.89
+  _feverObj: {fileID: 0}
 --- !u!4 &1960630392
 Transform:
   m_ObjectHideFlags: 0
