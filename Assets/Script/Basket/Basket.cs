@@ -5,6 +5,19 @@ using UnityEngine;
 
 public class Basket : MonoBehaviour
 {
+    // スコア
+    [SerializeField] private GameObject _scoreObj;
+    Score _score;
+
+    [SerializeField] private int _normalEdamameScore;
+    [SerializeField] private int _arrowEdamameScore;
+    [SerializeField] private int _clockEdamameScore;
+    [SerializeField] private int _ropeEdamameScore;
+    [SerializeField] private int _ropeblackEdamameScore;
+    [SerializeField] private int _blackEdamameScore;
+    [SerializeField] private int _rainbowEdamameScore;
+    [SerializeField] private int _goldenEdamameScore;
+
     // どの枝豆か
     private KindEdamame _kind;
 
@@ -40,6 +53,8 @@ public class Basket : MonoBehaviour
         _timerFence = 0;
 
         _ropeEdamameFences = new List<GameObject>();
+
+        _score = _scoreObj.GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -87,19 +102,23 @@ public class Basket : MonoBehaviour
         switch (_kind)
         {
             case KindEdamame.NormalEdamame:
+                _score.AddScore(_normalEdamameScore);
                 break;
 
             case KindEdamame.ArrowEdamame:
+                _score.AddScore(_arrowEdamameScore);
                 _hasCaughtArrowEdamame = true;
                 gameObject.transform.localScale = new Vector3(1.5f, 0.8f, 0.8f);
 
                 break;
 
             case KindEdamame.ClockEdamame:
+                _score.AddScore(_clockEdamameScore);
                 _timerObj.GetComponent<Timer>().AddTime(10);
                 break;
 
             case KindEdamame.RopeEdamame:
+                _score.AddScore(_ropeEdamameScore);
                 if (!_hasCaughtRopeEdamame)
                 {
                     for (int i = 0; i < 3; ++i)
@@ -113,12 +132,15 @@ public class Basket : MonoBehaviour
 
             case KindEdamame.BlackEdamame:
                 // ステージ中央を爆発
+                _score.AddScore(_blackEdamameScore);
                 break;
 
             case KindEdamame.RainbowEdamame:
+                _score.AddScore(_rainbowEdamameScore);
                 break;
 
             case KindEdamame.GoldenEdamame:
+                _score.AddScore(_goldenEdamameScore);
                 break;
         }
     }
