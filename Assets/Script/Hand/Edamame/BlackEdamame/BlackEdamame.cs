@@ -34,5 +34,10 @@ public class BlackEdamame : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        if (other.gameObject.name == "Stage" || other.gameObject.name == "Push" || other.gameObject.name == "Wall")
+        {
+            gameObject.GetComponent<Edamame>().SetIsActiveFever(true);
+        }
     }
 }

@@ -27,6 +27,9 @@ public class RemainingEdamameMgr : MonoBehaviour
     // マスクのスピード
     private float _speedChangeBottom;
 
+    [SerializeField] private GameObject _feverObj;
+    private Fever _fever;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,11 +44,24 @@ public class RemainingEdamameMgr : MonoBehaviour
             _remainingEdamameImgMasksObj[i] = GameObject.Find($"Mask{3 - i}");
             _remainingEdamameImgMasksObj[i].GetComponent<RectMask2D>().padding = new Vector3(0, _minMaskBottom, 0);
         }
+
+        _fever = _feverObj.GetComponent<Fever>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_fever.GetIsFever())
+        {
+            _time = 0;
+            _numRemainingEdamame = 3;
+
+            for (int i = 0; i < 3; ++i)
+            {
+                _remainingEdamameImgMasksObj[i].GetComponent<RectMask2D>().padding = new Vector4(0, _minMaskBottom, 0, 0);
+            }
+        }
+
         if (_numRemainingEdamame < _maxRemainingEdamame)
         {
             _time += Time.deltaTime;
