@@ -96,12 +96,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowEdamame_fence
       objectReference: {fileID: 0}
+    - target: {fileID: 6114619801528059815, guid: 2d4541fce5acf33408530514022d43cf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.608
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114619801528059815, guid: 2d4541fce5acf33408530514022d43cf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.106
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114619801528059815, guid: 2d4541fce5acf33408530514022d43cf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.838
+      objectReference: {fileID: 0}
     - target: {fileID: 7222941353563842876, guid: 2d4541fce5acf33408530514022d43cf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 49ce58850e9aa7c41be05cbf606d3f72, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -8793153599022328566, guid: 2d4541fce5acf33408530514022d43cf, type: 3}
+    - {fileID: -8835565688363468347, guid: 2d4541fce5acf33408530514022d43cf, type: 3}
+    - {fileID: 5200543694861033364, guid: 2d4541fce5acf33408530514022d43cf, type: 3}
+    - {fileID: 4981485181039384014, guid: 2d4541fce5acf33408530514022d43cf, type: 3}
+    - {fileID: 8900761294384068728, guid: 2d4541fce5acf33408530514022d43cf, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d4541fce5acf33408530514022d43cf, type: 3}

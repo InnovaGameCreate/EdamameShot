@@ -73,6 +73,10 @@ PrefabInstance:
       value: RainbowEdamame
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 17b9e923f204a2c439a5f6ea44404c9f, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 17b9e923f204a2c439a5f6ea44404c9f, type: 3}
       propertyPath: m_TagString
       value: Edamame
       objectReference: {fileID: 0}

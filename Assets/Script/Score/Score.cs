@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    // スコア
     private int _score;
 
-    // Start is called before the first frame update
     void Start()
     {
-        _score = 0;
+        // PlayerPrefsからスコアを読み込む（存在しない場合は0）
+        _score = PlayerPrefs.GetInt("Score", 0);
+        ShowScore();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ResultScore.score = _score;
@@ -29,5 +28,7 @@ public class Score : MonoBehaviour
     {
         _score += score;
         ShowScore();
+        // PlayerPrefsにスコアを保存
+        PlayerPrefs.SetInt("Score", _score);
     }
 }
