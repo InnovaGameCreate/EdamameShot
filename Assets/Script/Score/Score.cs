@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
     {
         // PlayerPrefsからスコアを読み込む（存在しない場合は0）
         _score = PlayerPrefs.GetInt("Score", 0);
+        _score = 0;
         ShowScore();
     }
 
