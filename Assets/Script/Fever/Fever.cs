@@ -11,7 +11,7 @@ public class Fever : MonoBehaviour
     private float FeverTimed = 0; //FeverŒo‰ßŽžŠÔ
     private int FeverCount = 0; //FeverTime’†‚È‚ç‚ÎFeverNeeds==FeverCount==needs
 
-    public bool _isFever;
+    private bool _isFever;
 
     // Start is called before the first frame update
     void Start()
