@@ -46,8 +46,6 @@ public class RemainingEdamameMgr : MonoBehaviour
         }
 
         _fever = _feverObj.GetComponent<Fever>();
-
-        Debug.Log(_fever);
     }
 
     // Update is called once per frame

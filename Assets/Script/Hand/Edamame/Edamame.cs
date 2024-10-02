@@ -36,7 +36,7 @@ public class Edamame : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
 
         // 当たり判定無効化
-        gameObject.GetComponent<Collider>().enabled = false;
+        //gameObject.GetComponent<Collider>().enabled = false;
 
         _isActiveFever = false;
     }
