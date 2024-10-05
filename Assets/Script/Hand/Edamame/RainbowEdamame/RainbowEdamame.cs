@@ -28,7 +28,6 @@ public class RainbowEdamame : MonoBehaviour
 
         if (other.gameObject.name == "Stage" || other.gameObject.name == "Push" || other.gameObject.name == "Wall")
         {
-            Debug.Log("Hello");
             gameObject.GetComponent<Edamame>().SetIsActiveFever(true);
         }
     }

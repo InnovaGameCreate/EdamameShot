@@ -157,6 +157,9 @@ public class Basket : MonoBehaviour
 
             case KindEdamame.BlackEdamame:
                 // ステージ中央を爆発
+                GameObject explosionobj = GameObject.Find("Explosion");
+                explosionobj.GetComponent<Explosion>().Explode();
+
                 _score.AddScore(_blackEdamameScore);
                 break;
 

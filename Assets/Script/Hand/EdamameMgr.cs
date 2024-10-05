@@ -44,20 +44,93 @@ public class EdamameMgr : MonoBehaviour
     [SerializeField] private GameObject _remainingEdamameMgrObj;
     private RemainingEdamameMgr _remainingEdamameMgr;
 
+    // èâä˙ÇÃé}ì§ÇîzíuÇ∑ÇÈîÕàÕ
+    [SerializeField] private float EDAMAME_RANGE_W;
+    [SerializeField] private float EDAMAME_RANGE_H;
+
     // Start is called before the first frame update
     void Start()
     {
         _angleX = 30;
         _angleY = 30;
 
-
         _howEdamameRandRange = new int[7];
         _kind = new KindEdamame();
         _remainingEdamameMgr = _remainingEdamameMgrObj.GetComponent<RemainingEdamameMgr>();
 
-        CreateNewEdamame();
-    }
+        for (int num = 0; num < 30; ++num)
+        {
+            for (int i = 0; i < _howEdamameShow.Length; ++i)
+            {
+                if (i == 0)
+                {
+                    _howEdamameRandRange[0] = _howEdamameShow[0];
+                    continue;
+                }
 
+                _howEdamameRandRange[i] = _howEdamameRandRange[i - 1] + _howEdamameShow[i];
+            }
+
+            int randEdamame = Random.Range(1, _howEdamameRandRange[6] + 1);
+            for (int i = 0; i < _howEdamameRandRange.Length; ++i)
+            {
+                if (i == 0)
+                {
+                    if (randEdamame <= _howEdamameRandRange[0])
+                    {
+                        _kind = (KindEdamame)i;
+                        break;
+                    }
+
+                    continue;
+                }
+
+                if (randEdamame >= _howEdamameRandRange[i - 1] && randEdamame <= _howEdamameRandRange[i])
+                {
+                    _kind = (KindEdamame)i;
+                    break;
+                }
+            }
+
+            switch (_kind)
+            {
+                case KindEdamame.NormalEdamame:
+                    _edamamePrefab = NORMAL_EDAMAME_PREFAB; break;
+
+                case KindEdamame.RainbowEdamame:
+                    _edamamePrefab = RAINBOW_EDAMAME_PREFAB; break;
+
+                case KindEdamame.GoldenEdamame:
+                    _edamamePrefab = GOLDEN_EDAMAME_PREFAB; break;
+
+                case KindEdamame.RopeEdamame:
+                    _edamamePrefab = ROPE_EDAMAME_PREFAB; break;
+
+                case KindEdamame.BlackEdamame:
+                    _edamamePrefab = BLACK_EDAMAME_PREFAB; break;
+
+                case KindEdamame.ClockEdamame:
+                    _edamamePrefab = CLOCK_EDAMAME_PREFAB; break;
+
+                case KindEdamame.ArrowEdamame:
+                    _edamamePrefab = ARROW_EDAMAME_PREFAB; break;
+
+                default:
+                    Debug.Log("Error"); break;
+            }
+
+            // ç¿ïWê›íË
+            float x = Random.Range(-EDAMAME_RANGE_W, EDAMAME_RANGE_W);
+            float y = Random.Range(1, 3);
+            float z = Random.Range(-EDAMAME_RANGE_H, EDAMAME_RANGE_H);
+
+            _currentEdamame = Instantiate(_edamamePrefab, new Vector3(x, y, z + 3), Quaternion.identity);// é}ì§ê∂ê¨
+            _currentEdamame.GetComponent<Collider>().enabled = true;
+            _currentEdamame.GetComponent<Rigidbody>().useGravity = true;
+
+        }
+            CreateNewEdamame();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -125,7 +198,6 @@ public class EdamameMgr : MonoBehaviour
                 break;
             }
         }
-
 
         switch (_kind)
         {
