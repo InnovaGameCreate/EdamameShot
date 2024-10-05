@@ -14,11 +14,11 @@ public class TitleScenesChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))    //スペースキーを押すとスクリーン遷移
+        if (Input.GetKeyDown(KeyCode.Space))    //スペースキーを押すとスクリーン遷移
         {
             SceneManager.LoadScene("SampleScene");  //GameSceneを仮の遷移先
         }
-        if (Input.GetKey(KeyCode.Return))    //enterキーを押すとスクリーン遷移
+        if (Input.GetKeyDown(KeyCode.Return))    //enterキーを押すとスクリーン遷移
         {
             SceneManager.LoadScene("ManualScene");  //ManualSceneを仮の遷移先
         }
