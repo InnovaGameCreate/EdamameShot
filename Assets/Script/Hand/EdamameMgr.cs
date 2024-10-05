@@ -8,7 +8,7 @@ public class EdamameMgr : MonoBehaviour
     // Šp“x‚Ì”ÍˆÍ
     public const float ANGLE_X_MIN = 30;
     public const float ANGLE_X_MAX = 150;
-    public const float ANGLE_Y_MIN = 10;
+    public const float ANGLE_Y_MIN = 30;
     public const float ANGLE_Y_MAX = 80;
 
     // Šp“x
