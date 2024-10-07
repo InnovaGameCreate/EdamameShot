@@ -14,7 +14,7 @@ public class ManualScenesChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Return))    //enterキーを押すとスクリーン遷移
+        if (Input.GetKeyDown(KeyCode.Return))    //enterキーを押すとスクリーン遷移
         {
             SceneManager.LoadScene("TitleScene");  //TitleSceneを仮の遷移先
         }
