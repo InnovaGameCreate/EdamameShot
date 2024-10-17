@@ -1925,7 +1925,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _feverTime: 10
   _feverNeeds: 5
-  _isFever: 0
 --- !u!114 &1109888741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2173,6 +2172,8 @@ MonoBehaviour:
   ARROW_EDAMAME_PREFAB: {fileID: 7110618928282775527, guid: 28460a88d7f6e824388c68a35a5a55cb, type: 3}
   _howEdamameShow: 320000000a0000000700000009000000070000000900000008000000
   _remainingEdamameMgrObj: {fileID: 1809451050}
+  EDAMAME_RANGE_W: 0
+  EDAMAME_RANGE_H: 0
 --- !u!65 &1293982575
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2307,10 +2308,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 960, y: 540}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
